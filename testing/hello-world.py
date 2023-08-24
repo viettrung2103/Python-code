@@ -22,7 +22,9 @@ print ("-------MATH_OPERATION------")
 
 number_str= "trun";
 number = float(number_str);
-print(number);
+
+
+
 
 # def is_float(s):
 #     try:
