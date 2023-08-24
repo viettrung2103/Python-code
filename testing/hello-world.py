@@ -20,7 +20,7 @@ print(fourth.imag) #PRINT OUT IMAGING PART OF COMPLEX NUMBER
 
 print ("-------MATH_OPERATION------")
 
-number_str= "trung";
+number_str= "trun";
 number = float(number_str);
 print(number);
 
