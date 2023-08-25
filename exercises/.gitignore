@@ -1,0 +1,3 @@
+#add ignore files and folder
+*.idea
+venv/
