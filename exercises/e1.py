@@ -8,4 +8,10 @@
 # Make sure that you are able to pull, commit and push your changes to the repository.
 
 name = input("What is your name: ")
-print(f"Welcome to programming, {name}")
+age_str = input ("what is your age:")
+age = int(age_str)
+# print(f"Welcome to programming, {name}")
+# print("Welcome to programming," +name+ "!")
+
+print(f"{name}")
+print(f"age {age:2d}")

@@ -36,3 +36,4 @@ kilo = int(total // 1000)
 remain = total - kilo*1000
 print(f"total {total:.2f}")
 print(f"kilo:{kilo} and gram: {remain:.2f}")
+
