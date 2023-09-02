@@ -4,51 +4,37 @@ number_str = input("Type number: ")
 smallest = largest = 0
 n = 0
 while number_str != "":
-    while n <= 1 and number_str != "": #to assign the first two number as smallest and largest
-        number = int(number_str)
+    while n <= 1 : #to assign the first two number as smallest and largest
 
-        if number > largest:
+        number = int(number_str)
+        if number > largest: #
+            # when n = 0:number =1 [0,1]
+            #when n =  1, number =2 [1,2] !!
             smallest = largest
             largest = number
 
         elif number == largest:
+            # when n = 0:number =1 [0,1]
+            #when n =  1, number =1 [0,1]
             smallest = smallest
             largest = number
         elif largest < number <= smallest:
+            # when n = 0:number =3 [0,3]
+            #when n =  1, number =2 [2,3]
             smallest = number
         else :
+            # when n = 0:number =3 [0,3]
+            #when n =  1, number =0 [0,3]
             smallest = number
+        print(f"n: {n}")
         n = n +1
         print(f'so nho nhat: {smallest}')
         print(f'so lon nhat: {largest}')
-
         number_str = input("Type number:")
+        if number_str == "": # break when next input is ''
+            break
 
-        # while n == 0: # n = 0
-        #     if number >= largest:
-        #         largest = number
-        #     else:
-        #         if number <= smallest:
-        #             smallest = number
-        #     print(f'so nho nhat: {smallest}')
-        #     print(f'so lon nhat: {largest}')
-        #     print(f'n : {n}')
-        #     n = n+1
-        #     number_str = input("Type number:")
-        # else: # n = 1
-        #     if number >= largest:
-        #         smallest = largest
-        #         largest = number
-        #     elif largest > number >= smallest:
-        #
-        #         smallest = number
-        #     else:
-        #         smallest = smallest
-        #     print(f'so nho nhat: {smallest}')
-        #     print(f'so lon nhat: {largest}')
-        #     print(f'n: {n}')
-        #     n = n+ 1
-        #     number_str = input("Type number:")
+
     else: #n > 1
         number = int(number_str)
         if number >= largest:
@@ -64,6 +50,7 @@ while number_str != "":
 
         number_str = input("Type number:")
 else:
+    print("--Finally--")
     print(f'smallest {smallest}')
     print(f'largest {largest}')
     print(f'input times: {n}')
