@@ -45,6 +45,7 @@ try: # check for not int or empty
             n = n+1
 #3 pi = points inside / total point
     pi = 4* inside_point / total_point
+    print(f"points inside circle:{ inside_point}")
     print(f"pi: {pi}") #result with n = 1,000,000 is pi = 3.141924
     print("finish")
 except ValueError: #not int or empty reult

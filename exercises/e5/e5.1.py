@@ -13,6 +13,10 @@ while x <= n:
     # print(f'dices list: {dices}')
     x = x + 1
 print(f'{dices}')
+counter = 0
+if (counter < dices):
+    sum = sum + dice
+
 for dice in dices:
     number = random.randint(1,6)
     sum = sum + number
