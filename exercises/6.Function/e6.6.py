@@ -8,13 +8,14 @@ PI = 3.14
 
 #get area from diameter
 def circle_area(dia):
-    area = 0.25 * PI * (dia ** 2* 0.01) # convert dia in centimeter to meter
+    area = 0.25 * PI * (dia * 0.01)**2 # convert dia in centimeter to meter
     return area
 
 #get the unit price of pizze
 def pizza_value(dia,price):
     area = circle_area(dia)
     unit_price = price/area
+    print(area)
     return unit_price
 
 ##compare value of both pizza

@@ -28,11 +28,14 @@ def display():
 def main():
         #ask name from user
         name = ask_name()
-        while name !="":
-            check_name(name) #check name
-            name =ask_name() #type again
-        print("Names that have been typed:")
-        display()
+        while True:
+            while name !="":
+                check_name(name) #check name
+                name =ask_name() #type again
+                print("Names that have been typed:")
+                display()
+            else:
+                break
 
 main()
 

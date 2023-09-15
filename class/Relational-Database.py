@@ -17,23 +17,26 @@ def getAllEmployees():
     cursor = connection.cursor()
     cursor.execute(sql)
     result = cursor.fetchall()
-    if cursor.rowcount > 0:
-        for row in result:
-            print(f"Hello! Iam {row[2]} {row[1]}. My salary is {row[3]} euroes per month")
+    print(result)
+    # if cursor.rowcount > 0:
+    #     for row in result:
+    #         print(f"Hello! Iam {row[2]} {row[1]}. My salary is {row[3]} euroes per month")
     return
 def getEmployeesByLastname(lastName):
     sql = "SELECT ID, lastname, firstname, salary from employees"
     sql += " WHERE lastname = '" + lastName + "'"
-    print(sql)
+    # print(sql)
     cursor = connection.cursor()
     cursor.execute(sql)
     result = cursor.fetchall()
+
+
     if cursor.rowcount > 0 :
         for row in result :
             print(f"Hello! I'm {row[2]} {row[1]}. My salary is {row[3]} euroes per month.")
+    else:
+        print("Does not find database with the input Last Name")
     return
-
-
 
 def getTable():
     sql = "SHOW tables"
@@ -46,11 +49,26 @@ def getTable():
             print(row)
     return
 
+def updateSalary(id,newSalary):
+    sql = "UPDATE employees SET salary="  + str(newSalary) + " Where id= " + str(id)
+    # print(sql)
+    cursor = connection.cursor()
+    cursor.execute(sql)
+    if cursor.rowcount == 1:
+        print("Salary updated")
+    else:
+        print("ID does not exist")
+
 # getTable()
 # # last_name= input("Enter last name: "
 # getAllEmployees()
-getEmployeesByLastname("Mynttinen")
+lastName = input("Last name: ")
 
+getEmployeesByLastname(lastName)
+
+id = int(input("Enter id: "))
+newSalary = float(input("Enter new salary: "))
+updateSalary(id,newSalary)
 # lastName = "Mynttinen"
 # sql = "SELECT ID, lastname, firstnam, salary from employees"
 # sql += "WHERE lastname = '" + lastName + "'"
