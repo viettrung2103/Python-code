@@ -24,7 +24,6 @@ def addCode():
         airportList[code] = airportName
         return airportList
 
-
 #get airport id >> input code >> print out code: airport
 
 def checkCode (code):
@@ -42,7 +41,6 @@ def getAirport():
     if checkCode(code):
         print("aiport code:",code," airport name:", airportList[code])
     print("------")
-
 
     # for code in airportList[""]
 #quit
@@ -63,8 +61,6 @@ def removeAirport():
         removeAirport = airportList.pop(code)
         # method pop return the removed item, not the removed list
         print(f"Airport {removeAirport} with ICAO code: {code} is removed")
-
-
 
 #main
 def main():

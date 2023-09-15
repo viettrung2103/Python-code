@@ -8,7 +8,7 @@ PI = 3.14
 
 #get area from diameter
 def circle_area(dia):
-    area = 0.25 * PI * (dia ** 2)
+    area = 0.25 * PI * (dia ** 2* 0.01) # convert dia in centimeter to meter
     return area
 
 #get the unit price of pizze

@@ -20,7 +20,7 @@ shoppingList = {}
 
 # check if the key, value is in dict, if yes, add new amount, if no, ad the key, value item to the dic
 def addItem():
-    name = input("What do you want to buy")
+    name = input("What do you want to buy? ")
     quality = int(input("How many:" ))
     if name in shoppingList:
         shoppingList[name] += quality
