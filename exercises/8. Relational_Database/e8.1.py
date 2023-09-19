@@ -1,33 +1,40 @@
 #Configure
 import mysql.connector
+from config import connection
 # Write a program that asks the user to enter the ICAO code of an airport.
 # The program fetches and prints out the corresponding airport name
 # and location (town) from the airport database used on this course.
 # The ICAO codes are stored in the ident column of the airport table.
 
-connection = mysql.connector.connect(
-    host = "127.0.0.1",
-    port = 3300,
-    database = "flight_game",
-    user = "root",
-    password = "",
-    autocommit = True
-)
+# connection = mysql.connector.connect(
+#     host = "127.0.0.1",
+#     port = 3300,
+#     database = "flight_game",
+#     user = "root",
+#     password = "",
+#     autocommit = True
+# )
 
-def getTables():
-    sql = "SHOW tables"
+def runSQL(sql):
     cursor = connection.cursor()
     cursor.execute(sql)
     result = cursor.fetchall()
+    return result
+
+def getTables():
+    sql = "SHOW tables"
+    result =runSQL(sql)
     for table in result:
         print(table)
 def getAirportByICAO(ICAO):
     sql = "SELECT ident, name  from airport"
     sql += " WHERE ident = '" + ICAO + "'"
+    # cursor = connection.cursor()
     # print(sql)
     cursor = connection.cursor()
     cursor.execute(sql)
     result = cursor.fetchall()
+    # result = runSQL(sql)
     # print(result)
     if cursor.rowcount > 0:
         for index, row in enumerate(result, start=1) :
