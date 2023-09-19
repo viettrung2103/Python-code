@@ -26,8 +26,8 @@ def getAirportByICAO(ICAO):
 def getDistant():
     ICAO1 = input("type first ICAO:")
     ICAO2 = input("type second ICAO:")
-    airport1 = getAirportByICAO(ICAO1)
-    airport2 = getAirportByICAO(ICAO2)
+    airport1 = getAirportByICAO(ICAO1.capitalize())
+    airport2 = getAirportByICAO(ICAO2.capitalize())
     # print(air)
     if airport1 != [] and airport2 != []:
         cordinator1 = (airport1[0][2],airport1[0][3])
