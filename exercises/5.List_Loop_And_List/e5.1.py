@@ -14,8 +14,8 @@ while x <= n:
     x = x + 1
 print(f'{dices}')
 counter = 0
-if (counter < dices):
-    sum = sum + dice
+# if (counter < dices):
+#     sum = sum + dice
 
 for dice in dices:
     number = random.randint(1,6)

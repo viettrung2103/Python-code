@@ -27,18 +27,19 @@ def getTables():
     for table in result:
         print(table)
 def getAirportByICAO(ICAO):
-    sql = "SELECT ident, name  from airport"
-    sql += " WHERE ident = '" + ICAO + "'"
+    # select ident, name as airport_name from airport where ident = "00AA"
+    sql = "SELECT ident, airport.name as airport_name, country.name as country_name  from airport, country"
+    sql += " WHERE airport.iso_country = country.iso_country and  ident = '" + ICAO + "'"
     # cursor = connection.cursor()
     # print(sql)
     cursor = connection.cursor()
     cursor.execute(sql)
     result = cursor.fetchall()
     # result = runSQL(sql)
-    # print(result)
+    print(result)
     if cursor.rowcount > 0:
         for index, row in enumerate(result, start=1) :
-            print (f"{index}. {row[0]} {row[1]}")
+            print (f"{index}. {row[0]} {row[1]}-- Location: {row[2]}")
     else:
         print(f"There is no airport with ICAO: {ICAO}")
 
@@ -46,7 +47,17 @@ def getAirportByICAO(ICAO):
 # sql = "Select ident as ICAO, name as airport_name from airport"
 # sql += " WHERE ident = '" + ICAO + "'"
 # print(sql)
+def main():
+    while True:
+        countryCode = input("input ICAO code:")
+        while countryCode != "":
+            getAirportByICAO(countryCode.capitalize())
+            countryCode = input("input ICAO code:")
 
-getAirportByICAO("MRPA")
+        else:
+            print("Thank you for using our program")
+            break
+
+# getAirportByICAO("MRPA")
 # getTables()
-
+main()

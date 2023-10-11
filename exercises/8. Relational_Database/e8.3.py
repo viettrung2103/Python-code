@@ -6,7 +6,7 @@
 # write geopy into the search field and finish the installation.
 
 from config import connection
-from geopy import distance
+from geopy.distance import geodesic as GD
 
 def getAirportByICAO(ICAO):
     sql = "SELECT ident, name, latitude_deg, longitude_deg FROM airport"
@@ -31,10 +31,12 @@ def getDistant():
     # print(air)
     if airport1 != [] and airport2 != []:
         cordinator1 = (airport1[0][2],airport1[0][3])
-        cordinator2 = (airport2[0][2],airport1[0][3])
-        totalDistance = distance.distance(cordinator1,cordinator2)
+        print(f"cordinator1: {cordinator1}")
+        cordinator2 = (airport2[0][2],airport2[0][3])
+        print(f"cordinator2: {cordinator2}")
+        totalDistance = GD(cordinator1,cordinator2).km
         print(f" {ICAO1}: {airport1[0][1]} ---- {ICAO2}: {airport1[0][1]}:")
-        print(f"total distance between: {totalDistance}")
+        print(f"total distance between: {totalDistance:,.2f} km")
     else:
         print("Missing information, cannot calculate the distant")
     # print(f"cordinator1 :{cordinator1}")
