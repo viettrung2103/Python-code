@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/02_Variable_and_Interactive/venv/Lib" />
+      <excludeFolder url="file://$MODULE_DIR$/02_Variable_and_Interactive/venv/Scripts" />
+      <excludeFolder url="file://$MODULE_DIR$/class/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/exercises/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/exercises/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/testing/venv/Lib" />
+      <excludeFolder url="file://$MODULE_DIR$/testing/venv/Scripts" />
+    </content>
     <orderEntry type="jdk" jdkName="Python 3.9" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

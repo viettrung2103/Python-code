@@ -26,7 +26,7 @@ print(student)
 for key, value in student.items():
     print(key+ ":",value)
 
-print(student)
+print(student.items())
 
 #Check if a key exist in dictionary
 print("------")
@@ -41,6 +41,17 @@ value = student.values()
 print(student.get("name"))
 
 d = {1: "a", 2: "b"}
+c = {1:1,2:3,3:4}
+print(sum(c.values()))
 
-a = d.values()
-print(a)
+
+values = d.values()
+list1 = list(values)
+
+keys = d.keys()
+list2 = list(keys)
+print(f"{values}")
+print(f"{keys}")
+print("list1", list1)
+print("list2",list2)
+
