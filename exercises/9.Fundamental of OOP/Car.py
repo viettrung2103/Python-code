@@ -61,16 +61,17 @@ class Car():
 
 #instaniate car object
 car1 = Car("ABC-123",142)
+print(car1)
 car1.speed(30)
-car1.acceleration()
+# car1.acceleration()
 
 car1.speed(70)
 car1.speed(50)
-car1.speed(-200)
-car1.speed(60)
-car1.drive(1.5)
-# print(car1)
-car1.drive(1.5)
+# car1.speed(-200)
+# car1.speed(60)
+# car1.drive(1.5)
+# # print(car1)
+# car1.drive(1.5)
 print(car1)
 # #
 # # # Finally, print out all the properties of the new car.
