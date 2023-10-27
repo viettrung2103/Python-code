@@ -8,19 +8,24 @@ RACE_DISTANCE = 10000
 # STARTING_NUMBER = 0
 
 class CarRace():
-    def __init__(self):
+    def __init__(self,name,kilometer,num_car):
+        ##car_list is number of car in a race
+        self.name = name
+        self.kilometer = kilometer
+        # self.num_car = num_car
         self.duration = 0
-        self.carList = []
-        # self.isWin = False
         self.leadingCar: Car = None # check the leading car
+        self.carList =[]
+        self.createCarList(num_car)
+        # self.isWin = False
 
     def createCar(self,number):
         registerNo = f"ABC - {number}"
         maxSpeed = random.randint(100,200)
         return Car(registerNo,maxSpeed)
 
-    def createCarList(self):
-        for i in range(1,11):
+    def createCarList(self,num_car):
+        for i in range(1,num_car):
             car = self.createCar(i)
             self.carList.append(car)
             self.checkLeading(car) ## assign the first created car as the leading car
@@ -46,17 +51,17 @@ class CarRace():
             car.drive(ONE_HOUR)
             self.checkLeading(car)
 
-    def advanceOneHour(self):
+    def hour_passes(self):
         self.duration = self.duration + ONE_HOUR
         self.changeSpeedInOneHour()
 
-    def showRaceInfo(self):
+    def print_status(self):
         print(f"At: {self.duration}h | Leading Car: {self.leadingCar}")
         for car in self.carList:
             print(car)
 
     def isWin(self):
-        return self.leadingCar.distance > RACE_DISTANCE
+        return self.leadingCar.distance > self.kilometer
 
     def annouceWin(self,car):
         print("Congratulation !!")
@@ -66,15 +71,18 @@ class CarRace():
     def race(self):
 
         while self.isWin() == False :
-            self.advanceOneHour()
+            if self.duration % 10 == 0:
+                self.print_status()
+            self.hour_passes()
             # self.showRaceInfo()
         print("_____________________________")
         print("Race is completed")
         print("Here is the information of our race:")
-        self.showRaceInfo()
+        self.print_status()
         self.annouceWin(self.leadingCar)
 
-carRace = CarRace()
-carRace.createCarList()
-carRace.showRaceInfo()
-carRace.race()
+if __name__ == "__main__":
+    carRace = CarRace("Grand Demolition Derby",8000,10)
+    # carRace.createCarList()
+    # carRace.print_status()
+    carRace.race()
