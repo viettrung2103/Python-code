@@ -56,3 +56,11 @@ if __name__ == "__main__":
     # elevator.go_to_floor(1)
     # elevator.go_to_floor(1)
     # elevator.go_to_floor(4)
+
+# if __name__ == "__main__":
+# BOTTOM_FLOOR = 1
+# TOP_FLOOR = 10
+
+# elevator = Elevator("Elevator-1",BOTTOM_FLOOR,TOP_FLOOR)
+# print(elevator)
+# elevator.report_current_floor()

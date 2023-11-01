@@ -57,6 +57,7 @@ class Car():
         self.distance = self.distance + self.currentSpd * time
 
 
+if  __name__ == "__main__":
 # Write a main program where you create a new car (registration number ABC-123, maximum speed 142 km/h).
 
 #instaniate car object
@@ -76,3 +77,10 @@ class Car():
 # #
 # # # Finally, print out all the properties of the new car.
 # MAX_RANDOM_SPEED = 200
+
+    carList = []
+    for i in range(2):
+        car = Car("ABC",123)
+        carList.append(car)
+
+    print(carList)

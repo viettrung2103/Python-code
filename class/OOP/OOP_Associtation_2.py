@@ -80,6 +80,9 @@ class Course():
     def __str__(self):
         return self.name
 
+    def __repr__(self):
+        return self.name
+
     def add(self,student):
         self.studentList.append(student)
         # student.add(self)
@@ -99,6 +102,9 @@ class Student():
     def __str__(self):
         return self.name
 
+    # def __repr__(self):
+    #     return self.name
+
 
     def add(self,course: Course):
         self.courseList.append(course)
@@ -107,7 +113,7 @@ class Student():
     def getCourseList(self):
         newCourseList = []
         for course in self.courseList:
-            print("This is course",course)
+            # print("This is course",course)
             newCourseList.append(course)
         return newCourseList
 
