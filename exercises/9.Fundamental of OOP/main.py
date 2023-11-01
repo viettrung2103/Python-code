@@ -7,7 +7,6 @@
 # The speed of each car is changed so that the change in speed is a random value between -10 km/h and +15 km/h. This is done using the accerelate method.
 # Each car is made to drive for one hour. This is done with the drive method.
 
-from CarRace import CarRace
 from Car import Car
 import random
 

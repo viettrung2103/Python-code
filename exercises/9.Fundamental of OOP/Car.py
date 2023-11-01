@@ -58,25 +58,7 @@ class Car():
 
 
 if  __name__ == "__main__":
-# Write a main program where you create a new car (registration number ABC-123, maximum speed 142 km/h).
 
-#instaniate car object
-# car1 = Car("ABC-123",142)
-# print(car1)
-# car1.speed(30)
-# # car1.acceleration()
-#
-# car1.speed(70)
-# car1.speed(50)
-# # car1.speed(-200)
-# # car1.speed(60)
-# # car1.drive(1.5)
-# # # print(car1)
-# # car1.drive(1.5)
-# print(car1)
-# #
-# # # Finally, print out all the properties of the new car.
-# MAX_RANDOM_SPEED = 200
 
     carList = []
     for i in range(2):

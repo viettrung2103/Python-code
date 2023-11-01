@@ -1,4 +1,4 @@
-from Car import Car
+from Car import  Car
 import random
 
 MAX_RANDOM_SPEED = 200
@@ -73,9 +73,11 @@ class CarRace():
         while self.isWin() == False :
             if self.duration % 10 == 0:
                 self.print_status()
+                print("_____________________________")
+
             self.hour_passes()
             # self.showRaceInfo()
-        print("_____________________________")
+        # print("_____________________________")
         print("Race is completed")
         print("Here is the information of our race:")
         self.print_status()
