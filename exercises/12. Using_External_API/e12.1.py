@@ -1,3 +1,7 @@
+import json
+
+import requests.exceptions
+from PIL import Image
 
 # Write a program that fetches
 # and prints out a random Chuck Norris joke for the user.
@@ -10,7 +14,39 @@
 # keyword = input("Enter keyword: ")
 #
 # # Request template: https://api.tvmaze.com/search/shows?q=girls
-# request = "https://api.tvmaze.com/search/shows?q=" + keyword
+request = "https://api.chucknorris.io/jokes/random"
 #
-#
+
 # print(json.dumps(response, indent=2))
+
+def get_random_chuck_noris_joke():
+    try:
+    # response = requests.get(request)
+        response = requests.get(request).json()  #recommend way
+        # print(f"Response in JSON Format: {response}")
+        # # print(json.dumps(response, indent=2))
+        # print(f"JSON Object: {json.dumps(response,indent = 2)}")
+        #
+        # text = response['value']
+
+        # print(f"Response: {response}")
+        # print(f"Reponse in JSON format object(js): {json.dumps(response,indent=2)}")
+        print(response['value'])
+
+    except requests.exceptions.RequestException as e:
+        print(f" Error: {e}")
+
+def main():
+    command = input("Do you want to see random Chuck Noris Joke?  (1 - Yes, Else - No) ")
+    # print("1. Yes")
+
+    # print("Else. to Exit game")
+    while command == "1":
+        get_random_chuck_noris_joke()
+        print("___________________________________")
+        command = input("Do you want to see random Chuck Noris Joke? (1 - Yes, Else - No) ")
+
+
+if __name__ == "__main__" :
+# get_random_chuck_noris_joke()
+    main()
