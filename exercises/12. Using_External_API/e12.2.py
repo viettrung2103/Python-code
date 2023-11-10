@@ -10,9 +10,10 @@ import requests.exceptions
 import json
 import datetime as dt
 from pytz import timezone
+import  api_key
 
 
-private_key = "28e489100830be62a52cd6f528c12b6c"
+private_key = api_key.private_key
 
 #geo_request
 # query_string = "London"
