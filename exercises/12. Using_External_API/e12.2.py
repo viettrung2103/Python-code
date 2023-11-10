@@ -9,6 +9,7 @@
 import requests.exceptions
 import json
 import datetime as dt
+from pytz import timezone
 
 
 private_key = "28e489100830be62a52cd6f528c12b6c"
@@ -30,71 +31,113 @@ def get_location(location_name):
     try:
     # response = requests.get(request)
         response = requests.get(geo_request).json()  #recommend way
-        location =response[0]
-        location_lon = location["lon"]
-        location_lat = location["lat"]
+        if len(response) == 0 :
+            return []
 
-        # print(json.dumps(response[0], indent=2))
+        else:
+            location =response[0]
+            location_lon = location["lon"]
+            location_lat = location["lat"]
 
-        return [location_lon,location_lat]
+            # print(json.dumps(response[0], indent=2))
+
+            return [location_lon,location_lat]
     except requests.exceptions.RequestException as e:
         print(f" Error: {e}")
 
 def get_forecast_at_location(location_name):
-    location_lon, location_lat = get_location(location_name)
-    unit = "metric"
-    # print(f"longitute: {location_lon} - latitute: {location_lat}")
+    # result_str = []
+    location = get_location(location_name)
+    if location == [] :
+        return
+    else:
+        location_lon, location_lat = location
+        unit = "metric"
+        # print(f"longitute: {location_lon} - latitute: {location_lat}")
 
-    weather_request = f"https://api.openweathermap.org/data/2.5/weather?lat={location_lat}&lon={location_lon}&appid={private_key}&units={unit}"
-    try:
-        # response = requests.get(request)
-        response = requests.get(weather_request).json()  # recommend way
-        # print(json.dumps(response,indent=2))
+        weather_request = f"https://api.openweathermap.org/data/2.5/weather?lat={location_lat}&lon={location_lon}&appid={private_key}&units={unit}"
+        try:
+            # response = requests.get(request)
+            response = requests.get(weather_request).json()  # recommend way
+            # print(json.dumps(response,indent=2))
+            location = "Location: "+response['name']
 
-        weather = response["weather"][0]
-        main_weather = weather["main"]
-        description = weather["description"]
+            # print(result_str)
+            weather = response["weather"][0]
+            main_weather = "Ưeather: " + weather["main"]
+            description = "Description: " + weather["description"]
+            # result_str = result_str + main_weather +"\n" description + "\n""
 
-        main_temperature= response["main"]
-        temp =  main_temperature["temp"]
-        feels_like = main_temperature['feels_like']
+            # get temperature
+            main_temperature= response["main"]
+            temp = "Temperature: " +  str(main_temperature["temp"]) + " Celcius"
+            feels_like = "Feels Like: " + str(main_temperature['feels_like']) +" Celcius"
 
-        sys = response["sys"]
-        sunrise = sys['sunrise']
-        converted_sunrise = dt.datetime.fromtimestamp(sunrise).strftime('%A %d-%b-%Y, at: %H:%M:%S')
+            # sys = response["sys"]
+            # sunrise = sys['sunrise']
+            # converted_sunrise = "Sunrise at: " + dt.datetime.fromtimestamp(sunrise).strftime( '%H:%M:%S, %A %d-%b-%Y')
+            #
+            # sunset = sys['sunset']
+            # converted_sunset = "Sunset at: " +dt.datetime.fromtimestamp(sunset).strftime('%H:%M:%S, %A %d-%b-%Y')
 
-        sunset = sys['sunset']
-        converted_sunset = dt.datetime.fromtimestamp(sunset).strftime('%A %d-%b-%Y, at: %H:%M:%S')
+            result_str = [location,main_weather,description,temp,feels_like]
 
+            # print(f"Location: {location}")
+            #
+            # # print(f"Weather: {weather}")
+            # print(f"Main Weather: {main_weather}")
+            # print(f"DescriptionL: {description}")
+            #
+            # # print(f"Main: {main_temperature}")
+            # print(f"Temperature: {temp}")
+            # print(f"Feel like: {feels_like}")
+            #
+            # # print(f"Sys: {sys}")
+            # # print(f"Sunrise: {sunrise}")
+            # #%A %d - %b - %Y, %H:%M:%S - Friday 01-Jan-1994, 06:30:30
+            # # converted_sunrice = dt.datetime.fromtimestamp(sunrise).strftime('%A %d-%b-%Y, at: %H:%M:%S')
+            # print(f"Sunrise: {converted_sunrise}")
+            # print(f"Sunset: {converted_sunset}")
 
-
-        # print(f"Weather: {weather}")
-        print(f"Main Weather: {main_weather}")
-        print(f"DescriptionL: {description}")
-
-        # print(f"Main: {main_temperature}")
-        print(f"Temperature: {temp}")
-        print(f"Feel like: {feels_like}")
-
-        # print(f"Sys: {sys}")
-        # print(f"Sunrise: {sunrise}")
-        #%A %d - %b - %Y, %H:%M:%S - Friday 01-Jan-1994, 06:30:30
-        # converted_sunrice = dt.datetime.fromtimestamp(sunrise).strftime('%A %d-%b-%Y, at: %H:%M:%S')
-        print(f"Sunrise: {converted_sunrise}")
-        print(f"Sunset: {converted_sunset}")
-
-
+            return result_str
 
         # print(json.dumps(response[0], indent=2))
 
         # return [location_lon, location_lat]
-    except requests.exceptions.RequestException as e:
-        print(f" Error: {e}")
+        except requests.exceptions.RequestException as e:
+            print(f" Error: {e}")
+
+def convert_str (string_list) :
+    result_str = ""
+    for string in string_list:
+        result_str = result_str + string + "\n"
+
+    return result_str
 
 
-query_string = "London"
+def get_location_name():
+    return input("Type the Location you want to have forecast: ")
 
+def main():
+    location_name = get_location_name()
+    result_str_list = get_forecast_at_location(location_name)
+    if result_str_list == None :
+        print("There is no city with such name!!")
+        return
+    else:
+        final_str = convert_str(get_forecast_at_location(location_name))
+        print(final_str)
 
 # location_lon, location_lat = get_location(query_string)
 # print(f"longitute: {location_lon} - latitute: {location_lat}")
-get_forecast_at_location(query_string)
+# print(get_forecast_at_location(query_string))
+
+if __name__ == "__main__":
+    command = "1" # cause program to go to loop
+    while command  == "1":
+        main()
+        command = input("Do you want to continue? (1 - continue, else to quit) ")
+    # query_string = "New York"
+    # get_forecast_at_location(query_string)
+    # result_string_list = get_forecast_at_location(query_string)
+    # print(convert_str(result_string_list))
