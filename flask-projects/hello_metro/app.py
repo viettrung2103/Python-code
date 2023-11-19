@@ -87,20 +87,20 @@ def calculator():
 def result():
     number1 = int(request.form.get("number1"))
     number2 = int(request.form.get("number2"))
-    math = request.form.get("math")
-    if math == "sum":
+    maths = request.form.get("maths")
+    if maths == "sum":
         result = number1 + number2  
-    elif math == "minus":
+    elif maths == "minus":
         result = number1 - number2
-    elif math == "multi":
+    elif maths == "multi":
         result = number1 * number2
-    elif math == "divide":
+    elif maths == "divide":
         if number2 == 0:
             result = "Cannot divide by 0"
         else: 
             result = number1 / number2
     
-    return render_template("result.html", number1 = number1, number2 = number2, math = math,result = result)    
+    return render_template("result.html", number1 = number1, number2 = number2, maths = maths,result = result)    
 # @app.route(/sum_v2/<number1>/)
 # @app.route("/calculator/<name>")
 # @app.route("/calculator/", methods  = ['POST','GET'])

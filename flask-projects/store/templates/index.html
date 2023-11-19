@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  <h2>Books List</h2>
+  <p><a href="/add-book">Add Book:</a></p>
+  <table>
+    <thead>
+      <tr>
+        <thead>ID</thead>
+        <thead>title</thead>
+        <thead></thead>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in books %}
+        <tr>
+          <td>{{ book["id"] }}</td>
+          <td>{{ book["title"] }}</td>
+          <td>
+            <form action="/cart" method="post">
+              <input name="id" type="hidden" value="{{ book["id"] }}">
+              <button type="submit">Add to Cart</button>  
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
