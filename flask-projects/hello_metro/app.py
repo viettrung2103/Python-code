@@ -66,7 +66,9 @@ def calc_sum2(number1,number2):
             "total_sum" : total,
             "status": 200
         }
-        return response
+        json_response =json.dumps(response)
+        http_response = Response(response=json_response,status = 200, mimetype="application/json")
+        return http_response
     except ValueError:
         response = {
             "message":"Invalid number is added",
@@ -100,7 +102,12 @@ def result():
         else: 
             result = number1 / number2
     
-    return render_template("result.html", number1 = number1, number2 = number2, maths = maths,result = result)    
+    return render_template("result.html", 
+                           number1 = number1, 
+                           number2 = number2, 
+                           maths = maths,
+                           result = result
+                           )    
 # @app.route(/sum_v2/<number1>/)
 # @app.route("/calculator/<name>")
 # @app.route("/calculator/", methods  = ['POST','GET'])
@@ -125,7 +132,7 @@ def result():
 def page_not_found(error_code):
     response = {
         "message": "Invalid endpoint",
-        "status": 404
+        "status": error_code
     }
     json_reponse = json.dumps(response)
     http_response = Response(response=json_reponse, status=404, mimetype="application/json")

@@ -13,8 +13,8 @@ Session(app)
 @app.route("/")
 def index():
   name = session.get("name")
-  if not name:
-    return redirect("/login")
+  # if not name:
+  #   return redirect("/login")
   return render_template("index.html", name = name)
 
 @app.route("/login", methods=["POST","GET"])
@@ -28,4 +28,4 @@ def login():
 def logout():
   #clear user session
   session.clear()
-  return redirect("/")
+  return redirect("/login")
