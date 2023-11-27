@@ -15,18 +15,18 @@ def getICAO():
     ICAO = input("Type ICAO code: ").upper()
     return ICAO
 def getAirportByICAO(ICAO):
-    sql = "SELECT ident, name, latitude_deg, longitude_deg FROM airport"
+    sql = "SELECT ident, name, municipality FROM airport"
     sql += " WHERE ident ='" +ICAO+ "'"
     # print(sql)
     cursor = connection.cursor()
     cursor.execute(sql)
     result = cursor.fetchall()
     # print(result)
-    if cursor.rowcount > 0:
-        for index, row in enumerate(result, start=1) :
-            print (f"{index}.  {row[0]} -- {row[1]} -- {row[2]} -- {row[3]}")
-    else:
-        print(f"There is no airport with ICAO: {ICAO}")
+    # if cursor.rowcount > 0:
+    #     for index, row in enumerate(result, start=1) :
+    #         print (f"{index}.  {row[0]} -- {row[1]} -- {row[2]} -- {")
+    # else:
+    #     print(f"There is no airport with ICAO: {ICAO}")
     return result
 
 def main():
