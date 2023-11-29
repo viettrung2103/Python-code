@@ -1,7 +1,7 @@
 import json
 
 import requests.exceptions
-from PIL import Image
+
 
 # Write a program that fetches
 # and prints out a random Chuck Norris joke for the user.
@@ -14,7 +14,7 @@ from PIL import Image
 # keyword = input("Enter keyword: ")
 #
 # # Request template: https://api.tvmaze.com/search/shows?q=girls
-request = "https://api.chucknorris.io/jokes/random"
+requestURL = "https://api.chucknorris.io/jokes/random"
 #
 
 # print(json.dumps(response, indent=2))
@@ -22,7 +22,7 @@ request = "https://api.chucknorris.io/jokes/random"
 def get_random_chuck_noris_joke():
     try:
     # response = requests.get(request)
-        response = requests.get(request).json()  #recommend way
+        response = requests.get(requestURL).json()  #recommend way
         # print(f"Response in JSON Format: {response}")
         # # print(json.dumps(response, indent=2))
         # print(f"JSON Object: {json.dumps(response,indent = 2)}")

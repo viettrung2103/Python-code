@@ -8,6 +8,10 @@
 from config import connection
 from geopy.distance import geodesic as GD
 
+
+def getICAO():
+    ICAO = input("Type ICAO code: ").upper()
+    return ICAO
 def getAirportByICAO(ICAO):
     sql = "SELECT ident, name, latitude_deg, longitude_deg FROM airport"
     sql += " WHERE ident ='" +ICAO+ "'"
@@ -44,8 +48,10 @@ def getDistant():
 
 def main():
     while True:
-        getDistant()
-        # getAirportByICAO()
+        # getDistant()
+        ICAO = getICAO()
+        # print(ICAO)
+        getAirportByICAO(ICAO)
 
 
 # total = (40.07080078125,-74.93360137939453)
